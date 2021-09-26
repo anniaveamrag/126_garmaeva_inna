@@ -3,11 +3,9 @@ public class Task_1 implements Task_1_base {
     public int subtask_1_if(int first, int second, int third) {
         if ((first < second) & (first < third)) {
             return first;
-        }
-        else if (second < third) {
+        } else if (second < third) {
             return second;
-        }
-        else {
+        } else {
             return third;
         }
     }
@@ -16,33 +14,36 @@ public class Task_1 implements Task_1_base {
     public boolean subtask_2_if(int year) {
         if ((year % 4 == 0) && (year % 100 != 0) | (year % 400 == 0)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     @Override
     public int subtask_3_if(double x, double y, double left_up_x, double left_up_y, double width, double height) {
-        double right_up_x = left_up_x + width;
-        double left_down_y = left_up_y - height;
-        if ((y < left_up_y && y > left_down_y) & (x > left_up_x && x < right_up_x)) {
-            return 1;
-        } else if (x <= 0 & y <= 0) {
-            return 2;
+        double x1 = left_up_x + width;
+        double y1 = left_up_y - height;
+        if ((width > 0.000001) && (height > 0.000001)) {
+            if ((Math.abs(x - left_up_x) < 0.000001) || (Math.abs(x - x1) < 0.000001) || (Math.abs(y - left_up_y) < 0.000001) || (Math.abs(y - y1) < 0.000001)) {
+                return 0;
+            } else if ((x > left_up_x) && (y < left_up_y) && (x < x1) && (y > y1)) {
+                return 1;
+            } else {
+                return 0;
+            }
         } else {
-            return 0;
+            return 2;
         }
     }
 
     @Override
     public int subtask_4_if(double x0, double y0, double k, double b) {
-        if (y0 == (k * x0) + b) {
-            return 2;
-        } else if (y0 < (k * x0) + b) {
-            return 1;
-        } else {
+        if ((y0 - (k * x0 + b)) > 0.000001) {
             return 0;
+        } else if ((y0 - (k * x0 + b)) < 0.000001) {
+            return 2;
+        } else {
+            return 1;
         }
     }
 
@@ -101,11 +102,9 @@ public class Task_1 implements Task_1_base {
 
     @Override
     public int subtask_7_if(double vx, double vy, double vz, double speed, double time, double wall) {
-        double st = speed * time;
-        if (vx == 0 & vy == 0 & vz == 0) {
+        if ((speed < 0.000001) || (time < 0.000001)) {
             return 2;
-        }
-        if (vx * st == wall & vy * st == wall & vz * st == wall) {
+        } else if ((Math.sqrt(wall * wall + (wall * vy / vx) * (wall * vy / vx) + (wall * vz / vx) * (wall * vz / vx)) / speed) - time <= 0.000001) {
             return 1;
         } else {
             return 0;
