@@ -23,28 +23,24 @@ public class Task_1 implements Task_1_base {
     public int subtask_3_if(double x, double y, double left_up_x, double left_up_y, double width, double height) {
         double x1 = left_up_x + width;
         double y1 = left_up_y - height;
-        if ((width > 0.000001) && (height > 0.000001)) {
-            if ((Math.abs(x - left_up_x) < 0.000001) || (Math.abs(x - x1) < 0.000001) || (Math.abs(y - left_up_y) < 0.000001) || (Math.abs(y - y1) < 0.000001)) {
-                return 0;
-            } else if ((x > left_up_x) && (y < left_up_y) && (x < x1) && (y > y1)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else {
+        if (width < 0.000001 || height < 0.000001)
             return 2;
-        }
+        if(x1 - x < 0.000001 || x - left_up_x < 0.000001 )
+            return 0;
+        if(y - y1 < 0.000001 || left_up_y - y < 0.000001 )
+            return 0;
+        return 1;
     }
-
     @Override
     public int subtask_4_if(double x0, double y0, double k, double b) {
-        if ((y0 - (k * x0 + b)) > 0.000001) {
-            return 0;
-        } else if ((y0 - (k * x0 + b)) < 0.000001) {
+        double x = k*x0 + b;
+        if (Math.abs(x - y0) < 0.000001)
             return 2;
-        } else {
+        if (x - y0 < 0)
+            return 0;
+        if (x - y0 > 0)
             return 1;
-        }
+        return -1;
     }
 
     @Override
