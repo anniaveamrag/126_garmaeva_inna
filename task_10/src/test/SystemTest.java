@@ -88,26 +88,38 @@ public class SystemTest extends Assertions {
         DocumentBook documentBook = DocumentBook.create();
         documentBook.addDoc("Номер","Дата");
         documentBook.registerPaymentDoc(100, 1, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220202");
-        documentBook.registerPaymentDoc(500, 2, "Номер", TypeOfPaymentDoc.BankOrder, "20220303");
-        documentBook.registerPaymentDoc(300, 3, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220404");
-
+        documentBook.registerPaymentDoc(500, 2, "Номер", TypeOfPaymentDoc.BankOrder, "20220202");
+        documentBook.registerPaymentDoc(300, 3, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220202");
         documentBook.addDoc("Номер2","Дата");
         documentBook.registerPaymentDoc(400, 1, "Номер2", TypeOfPaymentDoc.PaymentOrder, "20220202");
-        documentBook.registerPaymentDoc(700, 2, "Номер2", TypeOfPaymentDoc.BankOrder, "20220303");
-        documentBook.registerPaymentDoc(800, 3, "Номер2", TypeOfPaymentDoc.PaymentOrder, "20220404");
-
+        documentBook.registerPaymentDoc(700, 2, "Номер2", TypeOfPaymentDoc.BankOrder, "20220202");
+        documentBook.registerPaymentDoc(800, 3, "Номер2", TypeOfPaymentDoc.PaymentOrder, "20220202");
         List<Integer> paymentDocs = new ArrayList();
         paymentDocs.add(100);
         paymentDocs.add(500);
         paymentDocs.add(300);
-
         paymentDocs.add(400);
         paymentDocs.add(700);
         paymentDocs.add(800);
-
         assertArrayEquals(paymentDocs.toArray(),documentBook.getAllPayments().toArray());
-
     }
-
+    @Test
+    public void deletePaymentDoc_DeletePaymentDocWithDocNumberNumberAndDate_PaymentDocCountEqualsZero(){
+        DocumentBook documentBook = DocumentBook.create();
+        documentBook.addDoc("Номер","20220101");
+        documentBook.registerPaymentDoc(100,2, "Номер", TypeOfPaymentDoc.PaymentOrder,"20220505");
+        documentBook.registerPaymentDoc(100,1, "Номер", TypeOfPaymentDoc.PaymentOrder,"20220606");
+        documentBook.deletePayment( "Номер", 2, "20220505");
+        documentBook.deletePayment( "Номер", 1, "20220606");
+        assertEquals(0, documentBook.getDocs().get("Номер").getPaymentDocCount());
+    }
+    @Test
+    public void deletePaymentDoc_DeleteNonExistentPaymentDoc_EqualsOne(){
+        DocumentBook documentBook = DocumentBook.create();
+        documentBook.addDoc("Номер","20220101");
+        documentBook.registerPaymentDoc(100,2, "Номер", TypeOfPaymentDoc.PaymentOrder,"20110919");
+        documentBook.deletePayment( "Номер", 1, "20220606");
+        assertEquals(1, documentBook.getDocs().get("Номер").getPaymentDocCount());
+    }
 
 }
