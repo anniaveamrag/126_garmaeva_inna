@@ -5,6 +5,9 @@ import core.TypeOfPaymentDoc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SystemTest extends Assertions {
     @Test
     public void create_CreateEmptyDocBook_DocCountEqualsZero(){
@@ -79,6 +82,31 @@ public class SystemTest extends Assertions {
         var exc = assertThrows(IllegalArgumentException.class, () ->
                 documentBook.registerPaymentDoc(100, -7, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220202"));
         assertTrue(exc.getMessage().toLowerCase().contains("Номер документа должен быть положительным"));
+    }
+    @Test
+    public void getList_getListOfAllPayments_equalLists(){
+        DocumentBook documentBook = DocumentBook.create();
+        documentBook.addDoc("Номер","Дата");
+        documentBook.registerPaymentDoc(100, 1, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220202");
+        documentBook.registerPaymentDoc(500, 2, "Номер", TypeOfPaymentDoc.BankOrder, "20220303");
+        documentBook.registerPaymentDoc(300, 3, "Номер", TypeOfPaymentDoc.PaymentOrder, "20220404");
+
+        documentBook.addDoc("Номер2","Дата");
+        documentBook.registerPaymentDoc(400, 1, "Номер2", TypeOfPaymentDoc.PaymentOrder, "20220202");
+        documentBook.registerPaymentDoc(700, 2, "Номер2", TypeOfPaymentDoc.BankOrder, "20220303");
+        documentBook.registerPaymentDoc(800, 3, "Номер2", TypeOfPaymentDoc.PaymentOrder, "20220404");
+
+        List<Integer> paymentDocs = new ArrayList();
+        paymentDocs.add(100);
+        paymentDocs.add(500);
+        paymentDocs.add(300);
+
+        paymentDocs.add(400);
+        paymentDocs.add(700);
+        paymentDocs.add(800);
+
+        assertArrayEquals(paymentDocs.toArray(),documentBook.getAllPayments().toArray());
+
     }
 
 
