@@ -117,9 +117,17 @@ public class SystemTest extends Assertions {
     public void deletePaymentDoc_DeleteNonExistentPaymentDoc_EqualsOne(){
         DocumentBook documentBook = DocumentBook.create();
         documentBook.addDoc("Номер","20220101");
-        documentBook.registerPaymentDoc(100,2, "Номер", TypeOfPaymentDoc.PaymentOrder,"20110919");
+        documentBook.registerPaymentDoc(100,2, "Номер", TypeOfPaymentDoc.PaymentOrder,"20220505");
         documentBook.deletePayment( "Номер", 1, "20220606");
         assertEquals(1, documentBook.getDocs().get("Номер").getPaymentDocCount());
+    }
+    @Test
+    public void getGeneralSum_CalculateDocGeneralSumOfPayments_GeneralSumEquals400(){
+        DocumentBook documentBook = DocumentBook.create();
+        documentBook.addDoc("123","20220707");
+        documentBook.registerPaymentDoc(300,101,"123", TypeOfPaymentDoc.BankOrder, "20220808");
+        documentBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20220909");
+        assertEquals(400, documentBook.getDocs().get("123").getSumOfPayments());
     }
 
 }
