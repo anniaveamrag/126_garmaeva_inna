@@ -129,5 +129,18 @@ public class SystemTest extends Assertions {
         documentBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20220909");
         assertEquals(400, documentBook.getDocs().get("123").getSumOfPayments());
     }
-
+    @Test
+    public void getListOfPayments_GetAllPaymentsFromDoc_EqualLists(){
+        DocumentBook documentBook = DocumentBook.create();
+        documentBook.addDoc("123","20220707");
+        documentBook.registerPaymentDoc(200,101,"123", TypeOfPaymentDoc.BankOrder, "20220808");
+        documentBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20220909");
+        documentBook.addDoc("321","20220707");
+        documentBook.registerPaymentDoc(500,101,"321", TypeOfPaymentDoc.BankOrder, "20220808");
+        documentBook.registerPaymentDoc(400,102,"321", TypeOfPaymentDoc.BankOrder, "20220909");
+        List<Integer> sums = new ArrayList();
+        sums.add(200);
+        sums.add(100);
+        assertArrayEquals(sums.toArray(), documentBook.getDocs().get("123").getListOfPayments().toArray());
+    }
 }
