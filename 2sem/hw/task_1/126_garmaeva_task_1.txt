@@ -5,8 +5,8 @@ Dynamic Array | 27 | newSize = size -> size = newSize | resize_resizeArray_newSi
 Dynamic Array | 30 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_getValueOutOfRange_IndexOutOfBoundsException
 Dynamic Array | 35 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_setValueOutOfRange_IndexOutOfBoundsException
 Dynamic Array | 40 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_insertValueOutOfRange_IndexOutOfBoundsException
-Dynamic Array | 42 | if(capacity < size) -> if(capacity <= size) | newArray_insertValue_ValueMeetsIndex
-Dynamic Array | 49 | data[size] = value -> data[index] = value | newArray_insertValue_ValueMeetsIndex
+Dynamic Array | 42 | if(capacity < size) -> if(capacity <= size) | newArray_insertValue_Insert
+Dynamic Array | 49 | data[size] = value -> data[index] = value | newArray_insertValue_InsertOne
 Dynamic Array | 52 | if(capacity < size) -> if(capacity <= size) | newArray_pushBackValue_ValueIsCorrect
 Dynamic Array | 56 | data[capacity] = value -> data[size] = value | newArray_pushBackValue_ValueIsCorrect
 Dynamic Array | 60 | if(size < 0) -> if(size <= 0) | newArray_popBackFromEmptyArray_UnsupportedOperationException
