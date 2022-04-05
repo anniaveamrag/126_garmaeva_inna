@@ -1,13 +1,13 @@
-Dynamic Array | 11 | size = 1 -> size = DefaultSize | newArray_getSizeOfNewArray_SizeEqualsDefaultSize
-Dynamic Array | 15 | data = new Object[capacity] -> data = new Object[size] | arraySet_setArrayValues_ValuesAreCorrect
-Dynamic Array | 21 | if(newSize > 0) -> if(newSize < 0) | resize_setNegativeValue_NegativeArraySizeException
-Dynamic Array | 27 | newSize = size -> size = newSize | resize_resizeArray_newSizeIsCorrect
-Dynamic Array | 30 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_getValueOutOfRange_IndexOutOfBoundsException
-Dynamic Array | 35 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_setValueOutOfRange_IndexOutOfBoundsException
-Dynamic Array | 40 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | newArray_insertValueOutOfRange_IndexOutOfBoundsException
-Dynamic Array | 42 | if(capacity < size) -> if(capacity <= size) | newArray_insertValue_Insert
-Dynamic Array | 49 | data[size] = value -> data[index] = value | newArray_insertValue_InsertOne
-Dynamic Array | 52 | if(capacity < size) -> if(capacity <= size) | newArray_pushBackValue_ValueIsCorrect
-Dynamic Array | 56 | data[capacity] = value -> data[size] = value | newArray_pushBackValue_ValueIsCorrect
-Dynamic Array | 60 | if(size < 0) -> if(size <= 0) | newArray_popBackFromEmptyArray_UnsupportedOperationException
-Dynamic Array | 66 | if(index < 0 || index > size) -> if(index < 0 || index >= size) | removeValue_RemoveOneValue_ValueIsCorrect
+DynamicArray.java|11|size = 1; -> size = DefaultSize;|newArray_getSizeOfNewArray_SizeEqualsDefaultSize
+DynamicArray.java|15|data = new Object[capacity]; -> data = new Object[size];|arraySet_setArrayValues_ValuesAreCorrect
+DynamicArray.java|21|if(newSize > 0) -> if(newSize < 0)|resize_setNegativeValue_NegativeArraySizeException
+DynamicArray.java|27|newSize = size; -> size = newSize;|resize_resizeArray_newSizeIsCorrect
+DynamicArray.java|30|if(index < 0 || index > size) -> if(index < 0 || index >= size)|newArray_getValueOutOfRange_IndexOutOfBoundsException
+DynamicArray.java|35|if(index < 0 || index > size) -> if(index < 0 || index >= size)|newArray_setValueOutOfRange_IndexOutOfBoundsException
+DynamicArray.java|40|if(index < 0 || index > size) -> if(index < 0 || index >= size)|newArray_insertValueOutOfRange_IndexOutOfBoundsException
+DynamicArray.java|42|if(capacity < size) { -> if(capacity <= size) {|newArray_insertValue_Insert
+DynamicArray.java|49|data[size] = value; -> data[index] = value;|newArray_insertValue_InsertOne
+DynamicArray.java|52|if(capacity < size) { -> if(capacity <= size) {|newArray_pushBackValue_ValueIsCorrect
+DynamicArray.java|56|data[capacity] = value; -> data[size] = value;|newArray_pushBackValue_ValueIsCorrect
+DynamicArray.java|60|if(size < 0) -> if(size <= 0)|newArray_popBackFromEmptyArray_UnsupportedOperationException
+DynamicArray.java|66|if(index < 0 || index > size) -> if(index < 0 || index >= size)|removeValue_RemoveOneValue_ValueIsCorrect

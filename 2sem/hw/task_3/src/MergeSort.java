@@ -14,9 +14,9 @@ public class MergeSort<T> implements Sort<T> {
         if(begin == end)
             return;
         int middle = (begin + end) / 2;
-        mergeSortRec(buffer, sorting, begin, middle); // 1
-        mergeSortRec(buffer, sorting, middle + 1, end); // 2
-        merge(buffer, sorting, begin, middle - begin + 1, end - middle); // 3
+        mergeSortRec(buffer, sorting, begin, middle);
+        mergeSortRec(buffer, sorting, middle + 1, end);
+        merge(buffer, sorting, begin, middle - begin + 1, end - middle);
     }
 
     private void merge(T[] from, T[] to, int pos, int blockSize1, int blockSize2) {
@@ -29,10 +29,10 @@ public class MergeSort<T> implements Sort<T> {
         int resSize = blockSize1 + blockSize2;
         for(int i = 0; i < resSize; ++i) {
             if(firstFocus == firstEnd)
-                to[resPos++] = from[secondFocus++]; // 4
+                to[resPos++] = from[secondFocus++];
             else if(secondFocus == secondEnd)
-                to[resPos++] = from[firstFocus++]; // 5
-            else if (comparator.compare(from[firstFocus], from[secondFocus]) < 0) // 6
+                to[resPos++] = from[firstFocus++];
+            else if (comparator.compare(from[firstFocus], from[secondFocus]) < 0)
                 to[resPos++] = from[firstFocus++];
             else
                 to[resPos++] = from[secondFocus++];

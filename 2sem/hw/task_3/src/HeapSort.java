@@ -7,15 +7,15 @@ public class HeapSort<T> implements Sort<T> {
         this.comparator = comparator;
         heapify();
         for(int sortedSize = 0; sortedSize < data.length - 1; ++sortedSize) {
-            swap(0, data.length - sortedSize - 1); // 1
+            swap(0, data.length - sortedSize - 1);
             siftDown(0, 1, 2, data.length - sortedSize - 1);
         }
     }
 
     private void heapify(){
         int start = (data.length - 2) / 2;
-        for (int i = start; i >= 0; --i) // 2
-            siftDown(i, 2 * i + 1, 2 * i + 2, data.length); // 3
+        for (int i = start; i >= 0; --i)
+            siftDown(i, 2 * i + 1, 2 * i + 2, data.length);
     }
 
     private void siftDown(int parent, int left, int right, int size) {

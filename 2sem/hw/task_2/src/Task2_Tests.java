@@ -8,7 +8,6 @@ public class Task2_Tests extends Assert {
         }
     }
 
-    // Тестирование сортировки пузырьком
     @Test
     public void bubbleSort_InvertSort() {
         BubbleSort<Integer> bubbleSort = new BubbleSort();
@@ -25,7 +24,6 @@ public class Task2_Tests extends Assert {
         assertArrayEquals(new Integer[]{1, 2, 3}, data);
     }
 
-    // Тестирование сортировки вставками
     @Test
     public void insertionSort_DataStaysTheSame() {
         InsertionSort<Integer> insertionSort = new InsertionSort<>();
@@ -34,7 +32,6 @@ public class Task2_Tests extends Assert {
         assertArrayEquals(new Integer[]{1, 2}, data);
     }
 
-    // Тестирование сортировки выбором
     @Test
     public void selectionSort_InvertSort() {
         SelectionSort<Integer> selectionSort = new SelectionSort<>();

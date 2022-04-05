@@ -8,7 +8,6 @@ public class Task3_Tests extends Assert {
         }
     }
 
-    // Тестирование сортировки кучей
     @Test
     public void HeapSort_InterchangeIndex() {
         HeapSort<Integer> heapSort = new HeapSort();
@@ -48,8 +47,6 @@ public class Task3_Tests extends Assert {
         heapSort.sort(data, new TestComparator());
         assertArrayEquals(new Integer[]{1, 1, 2, 3, 3, 4}, data);
     }
-
-    // Тестирование сортировки слиянием
 
     @Test
     public void MergeSort_UnsortedSort_TakeOne() {
@@ -91,20 +88,11 @@ public class Task3_Tests extends Assert {
         assertArrayEquals(new Integer[]{1, 1, 2, 3}, data);
     }
 
-    // Тестирование быстрой сортировки
     @Test
     public void QuickSort_InterchangeIndex() {
-        QuickSort<Integer> qs = new QuickSort();
+        QuickSort<Integer> quickSort = new QuickSort();
         Integer[] data = {2, 1};
-        qs.sort(data, new TestComparator());
+        quickSort.sort(data, new TestComparator());
         assertArrayEquals(new Integer[]{1, 2}, data);
-    }
-
-    @Test
-    public void QuickSort_UnsortedSort_TakeOne() {
-        Integer[] data = {8, 8, 6, 3, 5, 1, 2, 2, 5, 3};
-        QuickSort<Integer> qs = new QuickSort();
-        qs.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1, 2, 2, 3, 3, 5, 5, 6, 8, 8}, data);
     }
 }
