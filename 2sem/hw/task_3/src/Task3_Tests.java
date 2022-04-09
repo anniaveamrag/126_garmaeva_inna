@@ -90,9 +90,36 @@ public class Task3_Tests extends Assert {
 
     @Test
     public void QuickSort_InterchangeIndex() {
-        QuickSort<Integer> quickSort = new QuickSort();
-        Integer[] data = {2, 1};
-        quickSort.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1, 2}, data);
+        try {
+            Integer[] data = new Integer[]{2,1};
+            QuickSort quickSort = new QuickSort();
+            quickSort.sort(data, new TestComparator());
+            assertArrayEquals(new Integer[]{1, 2}, data);
+        }catch (Exception e){
+            fail();
+        }
+    }
+
+    @Test
+    public void QuickSort_UnsortedSort_TakeOne(){
+        try {
+            Integer[] data = new Integer[]{1,2,3,4,5,4,3,2,1};
+            QuickSort quickSort = new QuickSort();
+            quickSort.sort(data, new TestComparator());
+            assertArrayEquals(new Integer[]{1,1,2,2,3,3,4,4,5}, data);
+        } catch (Exception e){
+            fail();
+        }
+    }
+    @Test
+    public void QuickSort_UnsortedSort_TakeTwo(){
+        try {
+            Integer[] data = new Integer[]{1,4,2,6,3,2,6,3,5,4,1,2,2,5,4,2,3};
+            QuickSort quickSort = new QuickSort();
+            quickSort.sort(data, new TestComparator());
+            assertArrayEquals(new Integer[]{1,1,2,2,2,2,2,3,3,3,4,4,4,5,5,6,6}, data);
+        }catch (Exception e){
+            fail();
+        }
     }
 }

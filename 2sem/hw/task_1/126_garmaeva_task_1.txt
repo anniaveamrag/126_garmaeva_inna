@@ -11,3 +11,22 @@ DynamicArray.java|52|if(capacity < size) { -> if(capacity <= size) {|newArray_pu
 DynamicArray.java|56|data[capacity] = value; -> data[size] = value;|newArray_pushBackValue_ValueIsCorrect
 DynamicArray.java|60|if(size < 0) -> if(size <= 0)|newArray_popBackFromEmptyArray_UnsupportedOperationException
 DynamicArray.java|66|if(index < 0 || index > size) -> if(index < 0 || index >= size)|removeValue_RemoveOneValue_ValueIsCorrect
+DoubleLinkedList.java|11|return dummy == dummy; -> return size == 0;|PushFront_DoubleLinkedList_TakeOne
+DoubleLinkedList.java|17|return dummy.getPrev(); -> return dummy.getNext();|PushFront_DoubleLinkedList_HeadIsCorrect
+DoubleLinkedList.java|20|return dummy.getNext(); -> return dummy.getPrev();|PushFront_DoubleLinkedList_TailIsCorrect
+DoubleLinkedList.java|24|if(index < 0 || index > size) -> if(index < 0 || index >= size)|PushFront_DoubleLinkedList_TakeTwo
+DoubleLinkedList.java|28|cur = cur.getPrev(); -> cur = cur.getNext();|PushFront_DoubleLinkedList_SecondItemIsCorrect
+DoubleLinkedList.java|33|--size; -> ++size;|PushFront_DoubleLinkedList_SecondItemIsCorrect
+DoubleLinkedList.java|41|return insertBefore(getTail(), data); -> return insertAfter(getTail(), data);|PushFront_DoubleLinkedList_TailIsCorrect
+DoubleLinkedList.java|44|return insertBefore(getTail(), data); -> return insertBefore(getHead(), data);|PushBack_DoubleLinkedList_SecondItemIsCorrect
+DoubleLinkedList.java|47|node.getPrev().setPrev(node.getNext()); -> node.getPrev().setNext(node.getNext());|RemoveItem_DoubleLinkedList_FirstItemIsCorrect
+DoubleLinkedList.java|48|node.getNext().setNext(node.getPrev()); -> node.getNext().setPrev(node.getPrev());|RemoveItem_DoubleLinkedList_FirstItemIsCorrect
+DoubleLinkedList.java|55|list.getHead().setNext(node); -> list.getHead().setPrev(node);|InsertList_DoubleLinkedList_AllElementsAreCorrect
+DoubleLinkedList.java|56|list.getTail().setPrev(node.getNext()); -> list.getTail().setNext(node.getNext());|InsertList_DoubleLinkedList_AllElementsAreCorrect
+DoubleLinkedList.java|59| -> size += list.getSize();|InsertList_DoubleLinkedList_SizeIsCorrect
+DoubleLinkedList.java|66|list.getHead().setNext(node.getPrev()); -> list.getHead().setPrev(node.getPrev());|InsertList_DoubleLinkedList_EverythingIsCorrect
+DoubleLinkedList.java|67|list.getTail().setPrev(node); -> list.getTail().setNext(node);|InsertList_DoubleLinkedList_EverythingIsCorrect
+DoubleLinkedList.java|70| -> size += list.getSize();|InsertList_DoubleLinkedList_SizeIsCorrect2
+Node.java|13|this.next = prev; -> this.next = next;|PushFront_DoubleLinkedList_TailIsCorrect
+Node.java|14|this.prev = next; -> this.prev = prev;|PushFront_DoubleLinkedList_TailIsCorrect
+
